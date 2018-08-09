@@ -1,0 +1,125 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*
+;public class GUIPanel extends JPanel {
+
+	private final int WIDTH = 500, HEIGHT = 800;		//FRAME is 500x800 right now
+	private ImageIcon big, small, currentImage;		// MAP PHOTO Current Image is 480x350 BIG is LEFT for Larger Screen Option
+	
+	private JButton newRider;	// Gets an ACTIONListener and CANGenerate CarRiderOBJECT
+	private JButton newDriver;	// Gets an ACTIONListener and CANerate CarDriverOBJECT
+	private JButton newRide;	// NEW RIDE button
+	private JTextArea rideList;
+	private Font font = new Font("Helvetica", 0, 22);
+	
+	LinkedList<CarRider> riders = new LinkedList<CarRider>();
+	Queue<CarDriver> ride1 = new LinkedList<CarDriver>();
+	Queue<CarDriver> ride2 = new LinkedList<CarDriver>();
+	Queue<CarDriver> ride3 = new LinkedList<CarDriver>();
+	
+	public LinkedList<CarDriver> getRides(LinkedList<CarDriver> l){
+		return l;
+	}
+	//-------------------------
+	//	CONSTRUCTOR SETS UP GUI
+	public GUIPanel() {
+		
+//		GridLayout layout1 = new GridLayout(2,3);
+//		BorderLayout layout2 = new BorderLayout();
+//		setLayout(layout2);
+		small = new ImageIcon("GSU_map_480x350.jpg");
+		currentImage = small;
+		newRider = new JButton("New Rider");
+		newDriver = new JButton ("New Driver");
+		newRide = new JButton ("New Ride");
+		rideList = new JTextArea ("\n"+"\n"+"\n"+"\n"+"Enter 1 For Red Car     "+"\n"+"Enter 2 For Blue Car     "+"\n"+"Enter 3 For Green Car     "+"\n"+"Enter 4 For Grey Car     "+"\n");
+		rideList.setFont(font);
+		rideList.setPreferredSize(new Dimension(400,250));
+//		newRider.setPreferredSize(new Dimension(50,60));		TRYING TO SIZE BUTTONS TO ADJUST LAYOUT
+//		newDriver.setPreferredSize(new Dimension(50,60));		THAT SHITS NOT DOIN IT!!!
+//		newRide.setPreferredSize(new Dimension(50,60));
+		
+		newRider.addActionListener(new ButtonListener());
+		newDriver.addActionListener(new ButtonListener2());
+		newRide.addActionListener(new ButtonListener3());
+		add(newRider);
+		add(newDriver);
+		add(newRide);
+		add(rideList);
+		setBackground(Color.WHITE);
+		setPreferredSize(new Dimension(WIDTH,HEIGHT));	// THIS IS FRAME FRAME FRAME SIZE
+		setFocusable(true);
+	}		//END Panel 
+	
+	private class ButtonListener implements ActionListener{  // THIS IS A PASSENGER CLIENT
+		public void actionPerformed(ActionEvent event) {
+				
+				String fName = JOptionPane.showInputDialog(null,"Enter your first name please","      ");
+				String lName = JOptionPane.showInputDialog(null,"Enter your last name please","      ");
+				int passengers = Integer.parseInt(JOptionPane.showInputDialog(null, "How many seats do you need?", "       "));
+				int rideNumber =Integer.parseInt(JOptionPane.showInputDialog(null, "Which ride would you like to take?", "       "));
+
+				CarRider j = new CarRider(fName, lName, passengers, rideNumber);
+				riders.add(j);
+		}
+	}
+	
+	private class ButtonListener2 implements ActionListener{		// THIS IS A DRIVER TO PUT IN A RIDE QUE
+		public void actionPerformed(ActionEvent event) {
+				
+				String fName = JOptionPane.showInputDialog(null,"Enter your first name please","      ");
+				String lName = JOptionPane.showInputDialog(null,"Enter your last name please","      ");
+				int rideNumber =Integer.parseInt(JOptionPane.showInputDialog(null, "Which route would you like to Drive?", "       "));
+				CarDriver j = new CarDriver(fName, lName, rideNumber);
+				if(rideNumber==1) {
+					ride1.add(j);
+				}
+				else if(rideNumber==2) {
+					ride2.add(j);
+				}
+				else if(rideNumber==3 ) {
+					ride3.add(j);
+				}
+		}
+	}
+
+	private class ButtonListener3 implements ActionListener{
+		public void actionPerformed(ActionEvent event) {
+			String fName = JOptionPane.showInputDialog(null,"Enter your first name please","      ");
+			String lName = JOptionPane.showInputDialog(null,"Enter your last name please","      ");
+			int pass = Integer.parseInt(JOptionPane.showInputDialog(null, "How Many Passengers? ", "         "));
+			System.out.println("Hi " +fName+"  "+lName+".  Let me find room for "+pass+" passengers. ");
+			// NEEDS METHODS
+		}
+	}
+	
+public void paintComponent(Graphics page) {
+		super.paintComponent(page);
+		currentImage.paintIcon(this, page, 10, 400);
+		Color colorRed = Color.RED;
+		Color colorBlue = Color.BLUE;
+		Color colorGreen = Color.GREEN;
+		Color colorGray = Color.GRAY;
+		drawCar(page,colorRed,50,450);
+		drawCar(page,colorBlue,300,580);
+		drawCar(page,colorGreen,250,450);
+		drawCar(page,colorGray,100,660);
+}
+
+public static void drawCar(Graphics g,Color carColor, int carLeftOffst, int carTopOffst) {
+	g.setColor(carColor);
+	g.fillRect(carLeftOffst, carTopOffst, 30, 15);
+	g.fillOval(carLeftOffst+12, carTopOffst-7, 17, 14);
+	g.fillOval(carLeftOffst+2, carTopOffst-7, 25, 14);
+	g.setColor(Color.BLACK);
+	g.fillOval(carLeftOffst+5, carTopOffst+13, 5, 5);
+	g.fillOval(carLeftOffst+20, carTopOffst+13, 5, 5);
+	g.setColor(Color.YELLOW);
+	g.fillOval(carLeftOffst+7, carTopOffst-5, 14, 17);
+	g.setColor(Color.BLACK);
+	g.setFont(new Font("Serif",Font.BOLD,14));
+	g.drawString("5", carLeftOffst+11, carTopOffst+8);
+}
+
+}

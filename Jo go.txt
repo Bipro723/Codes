@@ -1,0 +1,37 @@
+import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+import java.awt.*;
+public class JOgo {
+	
+	
+	public static void main(String[]args) {
+		
+		ArrayList <CarRider> today = new ArrayList <CarRider>();
+		String fName="";
+//		WHILE LOOP CAN BE USED TO POPULATE ARRAY
+//		while(!fName.equalsIgnoreCase("a")){   
+		
+		fName = JOptionPane.showInputDialog(null,"Enter your first name please","      ");
+		String lName = JOptionPane.showInputDialog(null,"Enter your last name please","      ");
+
+		CarRider j = new CarRider(fName,lName);
+		System.out.print(" First name  :  "+j.getfNAME());
+		System.out.print(" Last name  :  "+j.getlNAME()+" \n");
+		today.add(j);
+//		}	
+		
+		System.out.println("\nToday size :   "+today.size());
+		
+		JFrame frame = new JFrame("GUI Efforts");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(new GUIPanel());
+		frame.pack();
+		frame.setResizable(false);
+		frame.setVisible(true);
+		
+	}		// END MAIN
+	
+	
+}
+© 2018 GitHub, Inc.

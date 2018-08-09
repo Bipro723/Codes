@@ -1,0 +1,36 @@
+import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+import java.awt.*;
+public class JOCarPool {
+	
+	
+	public static void main(String[]args) {
+		
+		ArrayList <CarRider> today = new ArrayList <CarRider>();
+//		WHILE LOOP CAN BE USED TO POPULATE ARRAY
+//		while(!fName.equalsIgnoreCase("a")){   				****************************
+		
+	/*	String fName = JOptionPane.showInputDialog(null,"Enter your first name please","      ");
+		String lName = JOptionPane.showInputDialog(null,"Enter your last name please","      ");
+		CarRider j = new CarRider(fName,lName);
+		System.out.print(" First name  :  "+j.getfNAME()+" Last name  :  "+j.getlNAME()+" \n\n");
+		today.add(j);
+		*/
+//		}													*****************************
+		
+
+		
+		JFrame frame = new JFrame("GUI Efforts");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(new GUIPanel());
+		frame.pack();
+		frame.setResizable(false); 	// Controls User Resizing, So the screen should look right at all times
+		frame.setVisible(true);
+		
+
+		
+	}		// END MAIN
+	
+	
+}

@@ -1,0 +1,11 @@
+import java.util.*;
+ 
+public class CarPool {
+
+	
+	
+/*	ArrayList <CarRider>clients = newArrayList <CarRider>();
+	ArrayList <CarDriver> drivers = newArrayList <CarDriver>();
+	*/
+	
+}

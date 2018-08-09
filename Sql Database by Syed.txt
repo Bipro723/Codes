@@ -1,0 +1,8 @@
+create table Customer
+(
+ PassFirstName varchar(50),
+ PassLastName varchar(50),
+ NumberofCars Int,
+ NumberofPassengers Int,
+ RouteNumber Int,
+)

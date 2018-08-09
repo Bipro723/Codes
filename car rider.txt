@@ -1,0 +1,37 @@
+import java.util.*;
+public class CarRider {
+
+	String fNAME;
+	String lNAME;
+	int passengers;
+	int rideNumber;
+	ArrayList<String> rides;	// THIS SHOULD BE A LIST OF RIDE OBJECTS  
+	
+	ArrayList <CarRider> todaysClients = new ArrayList <CarRider>();
+	
+	CarRider(){
+	}
+	CarRider(String fname, String lname){
+		fNAME=fname;
+		lNAME=lname;
+		}
+	CarRider(String fname, String lname, int passengrs, int rideNumbr){
+		fNAME=fname;
+		lNAME=lname;
+		passengers=passengrs;
+		rideNumber = rideNumbr;
+		todaysClients.add(this);
+		}
+	public String getfNAME() {
+		return fNAME;
+	}
+	public String getlNAME() {
+		return lNAME;
+	}
+	public ArrayList<String> getRides(){
+		return rides;
+	}
+	public ArrayList <CarRider> getRiders(){
+		return todaysClients;
+	}
+}

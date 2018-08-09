@@ -1,0 +1,34 @@
+import java.util.ArrayList;
+import java.util.*;
+
+public class CarDriver {
+
+	String fNAME;
+	String lNAME;
+	ArrayList<String> rides;  // THIS SHOULD BE A LIST OF RIDE OBJECTS MAYBE?
+	int rideQue;
+	Stack<String>capacity = new Stack<String>();  
+	
+//	ArrayList <CarRider> today = new ArrayList <CarRider>();
+	
+	CarDriver(){
+	}
+	CarDriver(String fname, String lname, int rQ){
+		fNAME=fname;
+		lNAME=lname;
+		rideQue=rQ;
+		}
+	public String getfNAME() {
+		return fNAME;
+	}
+	public String getlNAME() {
+		return lNAME;
+	}
+	public ArrayList<String> getRides(){
+		return rides;
+	}
+	public Stack<String> getCapacity(){
+		return capacity;
+	}
+	
+}
